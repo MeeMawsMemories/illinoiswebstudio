@@ -4,10 +4,181 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Illinois Web Studio</title>
+  <meta name="description" content="Simple websites for Southern Illinois businesses. Fast, clear, and built to convert." />
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .wrap {
+      width: min(920px, 92vw);
+      margin: 0 auto;
+      padding: 2rem 0 3rem;
+    }
+
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0 0 0.6rem;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4.5vw, 2.7rem);
+    }
+
+    h2 {
+      font-size: clamp(1.25rem, 2.8vw, 1.65rem);
+    }
+
+    p {
+      margin: 0.45rem 0 0;
+      color: var(--muted);
+    }
+
+    .lead {
+      font-size: 1.05rem;
+      max-width: 62ch;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: var(--brand);
+      color: #fff;
+      border-radius: 10px;
+      padding: 0.65rem 1rem;
+      font-weight: 600;
+      border: 1px solid var(--brand);
+    }
+
+    .btn:hover {
+      background: var(--brand-dark);
+    }
+
+    .btn.secondary {
+      background: #fff;
+      color: var(--brand);
+    }
+
+    ul {
+      margin: 0.5rem 0 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 0.8rem;
+      margin-top: 0.6rem;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.85rem;
+      background: #fff;
+    }
+
+    .card strong {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .footer {
+      margin-top: 1.2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Illinois Web Studio</h1>
-  <p>Websites made simple for Southern Illinois.</p>
-  <p>Email: <a href="mailto:hello@illinoiswebstudio.com">hello@illinoiswebstudio.com</a></p>
+  <main class="wrap">
+    <section class="section">
+      <h1>Simple websites for Southern Illinois businesses</h1>
+      <p class="lead">We build clean, fast one-page websites that make your business look professional and make it easy for customers to call or message you.</p>
+      <div class="cta-row" aria-label="Primary contact actions">
+        <a class="btn" href="tel:+13143123502">Call (314) 312-3502</a>
+        <a class="btn secondary" href="mailto:contact@illinoiswebstudio.com">Email hello@illinoiswebstudio.com</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What you get</h2>
+      <ul>
+        <li>A clear one-page site focused on calls and leads.</li>
+        <li>Mobile-first design that loads quickly on any device.</li>
+        <li>Simple updates and direct support from a local team.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Portfolio: Hogan Pools</h2>
+      <div class="portfolio-grid">
+        <article class="card">
+          <strong>Before</strong>
+          <p>Outdated layout, hard-to-read text, and no clear next step for visitors.</p>
+        </article>
+        <article class="card">
+          <strong>After</strong>
+          <p>Modern one-page structure with clear service info and direct call/email actions.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Service area, turnaround, and pricing</h2>
+      <p>Serving Southern Illinois, including Marion, Carbondale, Herrin, and surrounding communities.</p>
+      <p>Typical launch timeline: 5-7 business days once we have your details.</p>
+      <p>Pricing starts at $750 for a focused one-page business site.</p>
+    </section>
+
+    <section class="section">
+      <h2>Ready to launch?</h2>
+      <p>Call or email today and we can get your site started this week.</p>
+      <div class="cta-row" aria-label="Bottom contact actions">
+        <a class="btn" href="tel:+16185550147">Call (618) 555-0147</a>
+        <a class="btn secondary" href="mailto:hello@illinoiswebstudio.com">Email hello@illinoiswebstudio.com</a>
+      </div>
+    </section>
+
+    <p class="footer">Illinois Web Studio</p>
+  </main>
 </body>
 </html>
