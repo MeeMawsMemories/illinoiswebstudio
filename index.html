@@ -5,180 +5,148 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Illinois Web Studio</title>
   <meta name="description" content="Simple websites for Southern Illinois businesses. Fast, clear, and built to convert." />
-  <style>
-    :root {
-      color-scheme: light;
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --line: #e2e8f0;
-      --brand: #0f766e;
-      --brand-dark: #115e59;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    .wrap {
-      width: min(920px, 92vw);
-      margin: 0 auto;
-      padding: 2rem 0 3rem;
-    }
-
-    .section {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 1.25rem;
-      margin-top: 1rem;
-    }
-
-    h1,
-    h2,
-    h3 {
-      margin: 0 0 0.6rem;
-      line-height: 1.2;
-    }
-
-    h1 {
-      font-size: clamp(1.8rem, 4.5vw, 2.7rem);
-    }
-
-    h2 {
-      font-size: clamp(1.25rem, 2.8vw, 1.65rem);
-    }
-
-    p {
-      margin: 0.45rem 0 0;
-      color: var(--muted);
-    }
-
-    .lead {
-      font-size: 1.05rem;
-      max-width: 62ch;
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 1rem;
-    }
-
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      background: var(--brand);
-      color: #fff;
-      border-radius: 10px;
-      padding: 0.65rem 1rem;
-      font-weight: 600;
-      border: 1px solid var(--brand);
-    }
-
-    .btn:hover {
-      background: var(--brand-dark);
-    }
-
-    .btn.secondary {
-      background: #fff;
-      color: var(--brand);
-    }
-
-    ul {
-      margin: 0.5rem 0 0;
-      padding-left: 1.2rem;
-      color: var(--muted);
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 0.8rem;
-      margin-top: 0.6rem;
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 0.85rem;
-      background: #fff;
-    }
-
-    .card strong {
-      display: block;
-      margin-bottom: 0.2rem;
-    }
-
-    .footer {
-      margin-top: 1.2rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-  </style>
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
   <main class="wrap">
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="#" aria-label="Illinois Web Studio home">
+        <img src="assets/img/iwsicon.png" alt="Illinois Web Studio logo" width="40" height="40" />
+      </a>
+    </header>
+
     <section class="section">
-      <h1>Simple websites for Southern Illinois businesses</h1>
-      <p class="lead">We build clean, fast one-page websites that make your business look professional and make it easy for customers to call or message you.</p>
+      <h1>Fast, clean websites for local businesses.</h1>
+      <p class="lead">Built to look great on phones. Hosted reliably. Simple to update.</p>
       <div class="cta-row" aria-label="Primary contact actions">
-        <a class="btn" href="tel:+13143123502">Call (314) 312-3502</a>
-        <a class="btn secondary" href="mailto:contact@illinoiswebstudio.com">Email hello@illinoiswebstudio.com</a>
+        <a class="btn secondary" href="#portfolio">See a real example</a>
+        <a class="btn" href="tel:+13143123502">Text/Call (314) 312-3502</a>
       </div>
     </section>
 
     <section class="section">
-      <h2>What you get</h2>
+      <h2>Why us</h2>
+      <div class="why-grid" role="list" aria-label="Why choose us">
+        <button class="card why-card is-active" type="button" role="listitem" data-why="mobile">
+          <h3>Looks premium on mobile</h3>
+        </button>
+        <button class="card why-card" type="button" role="listitem" data-why="speed">
+          <h3>Loads fast</h3>
+        </button>
+        <button class="card why-card" type="button" role="listitem" data-why="cta">
+          <h3>Clear calls-to-action</h3>
+        </button>
+      </div>
+      <p class="interactive-note" id="why-detail">Most visitors browse on their phone first, so every layout decision starts mobile-first.</p>
+    </section>
+
+    <section class="section" id="portfolio">
+      <h2>Portfolio spotlight: Hogan Pools</h2>
+      <div class="toggle-row" aria-label="Portfolio view toggle">
+        <button class="chip is-active" type="button" data-portfolio="before">Before</button>
+        <button class="chip" type="button" data-portfolio="after">After</button>
+      </div>
+      <div class="portfolio-grid">
+        <article class="card portfolio-item is-active" id="portfolio-before">
+          <strong>Before</strong>
+          <p>Older pages felt dated and visitors had to hunt for contact info.</p>
+        </article>
+        <article class="card portfolio-item" id="portfolio-after">
+          <strong>After</strong>
+          <p>A focused one-page layout with mobile-friendly sections and obvious next steps.</p>
+        </article>
+      </div>
       <ul>
-        <li>A clear one-page site focused on calls and leads.</li>
-        <li>Mobile-first design that loads quickly on any device.</li>
-        <li>Simple updates and direct support from a local team.</li>
+        <li><strong>Problem:</strong> Too much clutter, weak mobile presentation, and low inquiry flow.</li>
+        <li><strong>Fix:</strong> Simplified structure, tightened copy, and added direct contact CTAs.</li>
+        <li><strong>Outcome:</strong> Easier browsing and more people reaching out from their phones.</li>
       </ul>
     </section>
 
     <section class="section">
-      <h2>Portfolio: Hogan Pools</h2>
-      <div class="portfolio-grid">
-        <article class="card">
-          <strong>Before</strong>
-          <p>Outdated layout, hard-to-read text, and no clear next step for visitors.</p>
-        </article>
-        <article class="card">
-          <strong>After</strong>
-          <p>Modern one-page structure with clear service info and direct call/email actions.</p>
-        </article>
+      <h2>Process</h2>
+      <div class="process-strip" aria-label="3-step process">
+        <button class="step step-btn is-active" type="button" data-step="examples">Send examples</button>
+        <p class="arrow" aria-hidden="true">→</p>
+        <button class="step step-btn" type="button" data-step="draft">We draft in 48 hours</button>
+        <p class="arrow" aria-hidden="true">→</p>
+        <button class="step step-btn" type="button" data-step="launch">Launch + iterate</button>
       </div>
+      <p class="interactive-note" id="step-detail">Share 2-3 sites you like plus your services, location, and best contact method.</p>
     </section>
 
     <section class="section">
-      <h2>Service area, turnaround, and pricing</h2>
-      <p>Serving Southern Illinois, including Marion, Carbondale, Herrin, and surrounding communities.</p>
-      <p>Typical launch timeline: 5-7 business days once we have your details.</p>
-      <p>Pricing starts at $750 for a focused one-page business site.</p>
-    </section>
-
-    <section class="section">
-      <h2>Ready to launch?</h2>
-      <p>Call or email today and we can get your site started this week.</p>
+      <h2>Contact</h2>
+      <p>Quick reply, no long forms.</p>
       <div class="cta-row" aria-label="Bottom contact actions">
-        <a class="btn" href="tel:+16185550147">Call (618) 555-0147</a>
-        <a class="btn secondary" href="mailto:hello@illinoiswebstudio.com">Email hello@illinoiswebstudio.com</a>
+        <a class="btn" href="tel:+13143123502">Text/Call (314) 312-3502</a>
+        <a class="btn secondary" href="mailto:contact@illinoiswebstudio.com">Email contact@illinoiswebstudio.com</a>
+        <button class="btn secondary" id="copy-email" type="button">Copy email</button>
       </div>
+      <p class="interactive-note" id="copy-status" aria-live="polite"></p>
     </section>
 
     <p class="footer">Illinois Web Studio</p>
   </main>
+  <script>
+    const whyCards = document.querySelectorAll('[data-why]');
+    const whyDetail = document.getElementById('why-detail');
+    const whyCopy = {
+      mobile: 'Most visitors browse on their phone first, so every layout decision starts mobile-first.',
+      speed: 'Optimized assets and simple structure keep page load times quick on real mobile networks.',
+      cta: 'Each section points to a next action so visitors know exactly how to contact you.'
+    };
+
+    whyCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        whyCards.forEach((item) => item.classList.remove('is-active'));
+        card.classList.add('is-active');
+        whyDetail.textContent = whyCopy[card.dataset.why];
+      });
+    });
+
+    const portfolioToggles = document.querySelectorAll('[data-portfolio]');
+    const portfolioBefore = document.getElementById('portfolio-before');
+    const portfolioAfter = document.getElementById('portfolio-after');
+
+    portfolioToggles.forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const showBefore = toggle.dataset.portfolio === 'before';
+        portfolioToggles.forEach((item) => item.classList.remove('is-active'));
+        toggle.classList.add('is-active');
+        portfolioBefore.classList.toggle('is-active', showBefore);
+        portfolioAfter.classList.toggle('is-active', !showBefore);
+      });
+    });
+
+    const stepButtons = document.querySelectorAll('[data-step]');
+    const stepDetail = document.getElementById('step-detail');
+    const stepCopy = {
+      examples: 'Share 2-3 sites you like plus your services, location, and best contact method.',
+      draft: 'You get a working draft quickly so feedback happens early and changes are easy.',
+      launch: 'Once approved, we launch and keep improving based on what users actually do.'
+    };
+
+    stepButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        stepButtons.forEach((item) => item.classList.remove('is-active'));
+        button.classList.add('is-active');
+        stepDetail.textContent = stepCopy[button.dataset.step];
+      });
+    });
+
+    const copyEmailButton = document.getElementById('copy-email');
+    const copyStatus = document.getElementById('copy-status');
+    const emailAddress = 'contact@illinoiswebstudio.com';
+
+    copyEmailButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(emailAddress);
+        copyStatus.textContent = 'Email copied.';
+      } catch {
+        copyStatus.textContent = 'Copy failed. Email: ' + emailAddress;
+      }
+    });
+  </script>
 </body>
 </html>
