@@ -248,6 +248,225 @@ ul {
   min-height: 1.4em;
 }
 
+.wb-hero {
+  margin-top: 0.75rem;
+}
+
+.wb-shell {
+  min-height: clamp(36rem, 86vh, 48rem);
+  position: relative;
+}
+
+.wb-welcome {
+  min-height: clamp(11rem, 24vw, 13rem);
+  display: grid;
+  align-content: center;
+  gap: 0.25rem;
+}
+
+.wb-kicker {
+  margin: 0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  color: color-mix(in srgb, var(--text) 75%, var(--muted));
+}
+
+.wb-underline {
+  display: inline-block;
+  width: min(16rem, 72vw);
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--brand) 35%, var(--brand) 65%, transparent 100%);
+  border-radius: 999px;
+  transform-origin: left;
+}
+
+.wb-builder {
+  margin-top: 0.85rem;
+}
+
+.wb-prompt {
+  margin-bottom: 0.6rem;
+}
+
+.wb-form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.wb-fieldset {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-2);
+  padding: 0.75rem;
+  margin: 0;
+}
+
+.wb-fieldset legend {
+  font-weight: 600;
+  padding: 0 0.3rem;
+}
+
+.wb-fieldset p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.wb-options {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.wb-options-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.wb-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface) 12%, var(--surface-2));
+  padding: 0.55rem 0.6rem;
+}
+
+.wb-option input {
+  margin-top: 0.18rem;
+  accent-color: var(--brand);
+}
+
+.wb-option:hover {
+  border-color: var(--brand);
+}
+
+.wb-label {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  font-weight: 600;
+}
+
+.wb-hero input[type='text'],
+.wb-hero textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface) 22%, var(--surface-2));
+  color: var(--text);
+  font: inherit;
+  padding: 0.62rem 0.68rem;
+}
+
+.wb-hero textarea {
+  resize: vertical;
+  min-height: 7rem;
+}
+
+.wb-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.wb-summary {
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface) 18%, var(--surface-2));
+  padding: 0.9rem;
+}
+
+.wb-summary-body {
+  min-height: 9.2rem;
+}
+
+.wb-summary-body p {
+  margin-top: 0;
+}
+
+.wb-summary-body ul {
+  margin-top: 0.45rem;
+}
+
+.wb-summary-actions {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.wb-summary.wb-ready {
+  border-color: color-mix(in srgb, var(--brand) 55%, var(--line));
+}
+
+.wb-hero :is(button, input, textarea, a):focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.wb-shell[data-state='welcome'] .wb-welcome {
+  animation: wbWelcomeIn 900ms ease forwards;
+}
+
+.wb-shell[data-state='welcome'] .wb-underline {
+  animation: wbSweep 580ms ease 300ms forwards;
+  transform: scaleX(0.08);
+}
+
+.wb-shell[data-state='welcome'] .wb-builder {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.wb-shell[data-state='builder'] .wb-builder,
+.wb-shell[data-state='reduced'] .wb-builder {
+  opacity: 1;
+  transform: none;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.wb-shell[data-state='builder'] .wb-welcome,
+.wb-shell[data-state='reduced'] .wb-welcome {
+  display: none;
+}
+
+@keyframes wbWelcomeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wbSweep {
+  from {
+    transform: scaleX(0.08);
+    opacity: 0.75;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .arrow {
   margin: 0;
   color: var(--muted);
@@ -260,6 +479,17 @@ ul {
   font-size: 0.95rem;
 }
 
+@media (min-width: 740px) {
+  .wb-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wb-wide {
+    grid-column: 1 / -1;
+  }
+
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -268,5 +498,13 @@ ul {
   .why-card,
   .step-btn {
     transition: none;
+  }
+
+  .wb-shell[data-state='welcome'] .wb-welcome,
+  .wb-shell[data-state='welcome'] .wb-underline,
+  .wb-shell[data-state='builder'] .wb-builder {
+    animation: none;
+    transition: none;
+    transform: none;
   }
 }
