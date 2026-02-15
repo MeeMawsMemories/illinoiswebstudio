@@ -13,6 +13,24 @@
       <a class="brand" href="#" aria-label="Illinois Web Studio home">
         <img src="assets/img/iwsicon.png" alt="Illinois Web Studio logo" width="40" height="40" />
       </a>
+      <div class="iws-contact-cta" aria-label="Primary contact actions">
+        <a class="btn iws-quote-btn" href="#contact">Request a Quote</a>
+        <div class="iws-contact-actions" role="group" aria-label="Quick call and text actions">
+          <a class="btn secondary iws-call-btn" href="tel:+15555555555" aria-label="Call now">Call</a>
+          <a class="btn secondary iws-text-btn" href="sms:+15555555555" aria-label="Text now">Text</a>
+        </div>
+        <div class="iws-phone" aria-label="Phone number image and copy action">
+          <img
+            src="/assets/phone/phone-number.png"
+            srcset="/assets/phone/phone-number@2x.png 2x"
+            alt="Phone number (555) 555-5555"
+            width="264"
+            height="56"
+          />
+          <button class="btn secondary iws-copy-btn" id="iws-copy-phone" type="button" aria-label="Copy phone number">Copy</button>
+          <span class="interactive-note iws-copy-status" id="iws-copy-status" aria-live="polite"></span>
+        </div>
+      </div>
     </header>
 
     <section class="section wb-hero" id="builder-hero" aria-labelledby="wb-heading">
@@ -106,18 +124,26 @@
 
     <section class="section" id="contact">
       <h2>Contact</h2>
-      <p>Quick reply, no long forms.</p>
-      <div class="cta-row" aria-label="Bottom contact actions">
-        <a class="btn" href="tel:+13143123502">Text/Call (314) 312-3502</a>
-        <a class="btn secondary" href="mailto:contact@illinoiswebstudio.com">Email contact@illinoiswebstudio.com</a>
-        <button class="btn secondary" id="copy-email" type="button">Copy email</button>
-      </div>
-      <p class="interactive-note" id="copy-status" aria-live="polite"></p>
+      <p>Use the form below and we’ll reply as soon as possible.</p>
+      <form class="contact-form" id="contact-form" action="#contact" method="post" novalidate>
+        <label class="contact-label" for="contact-name">Name</label>
+        <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="80" required />
+
+        <label class="contact-label" for="contact-email">Email</label>
+        <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="120" required />
+
+        <label class="contact-label" for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" rows="5" maxlength="700" required></textarea>
+
+        <button class="btn" type="submit">Send message</button>
+      </form>
+      <p class="interactive-note" id="contact-status" aria-live="polite"></p>
     </section>
 
     <p class="footer">Illinois Web Studio</p>
   </main>
   <script type="module" src="./assets/js/interactive-hero.js"></script>
+  <script src="./assets/js/phone-cta.js" defer></script>
   <script>
     const whyCards = document.querySelectorAll('[data-why]');
     const whyDetail = document.getElementById('why-detail');
@@ -151,17 +177,19 @@
       });
     });
 
-    const copyEmailButton = document.getElementById('copy-email');
-    const copyStatus = document.getElementById('copy-status');
-    const emailAddress = 'contact@illinoiswebstudio.com';
+    const contactForm = document.getElementById('contact-form');
+    const contactStatus = document.getElementById('contact-status');
 
-    copyEmailButton.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(emailAddress);
-        copyStatus.textContent = 'Email copied.';
-      } catch {
-        copyStatus.textContent = 'Copy failed. Email: ' + emailAddress;
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!contactForm.checkValidity()) {
+        contactStatus.textContent = 'Please complete all fields before sending.';
+        return;
       }
+
+      contactForm.reset();
+      contactStatus.textContent = 'Thanks. Your message has been received.';
     });
   </script>
 </body>
