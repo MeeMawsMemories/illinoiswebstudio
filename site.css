@@ -11,6 +11,10 @@
   --line-dark: #252b35;
   --brand: #86a8ff;
   --brand-dark: #86a8ff;
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
 }
 
 * {
@@ -24,9 +28,15 @@ html {
 body {
   margin: 0;
   font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 16px;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.4;
+  line-height: 1.55;
+}
+
+:is(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
 a:link,
@@ -49,16 +59,16 @@ b {
 .wrap {
   width: min(1180px, 98vw);
   margin: 0 auto;
-  padding: 0.55rem 0 1.5rem;
+  padding: var(--space-1) 0 var(--space-4);
 }
 
 .site-header {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 0.6rem;
+  margin-bottom: var(--space-2);
   min-height: 76px;
-  padding: 0.2rem 0.45rem;
+  padding: var(--space-1) var(--space-2);
   background: var(--surface);
   border-top: 1px solid var(--line-light);
   border-right: 1px solid var(--line-dark);
@@ -68,13 +78,13 @@ b {
 
 .page-columns {
   display: grid;
-  gap: 0.55rem;
+  gap: var(--space-3);
   align-items: start;
   grid-template-columns: 170px minmax(0, 1fr) 170px;
 }
 
 .column {
-  margin-top: 0.55rem;
+  margin-top: 0;
 }
 
 .column-main {
@@ -83,11 +93,15 @@ b {
 
 .column-main .section {
   margin-top: 0;
-  margin-bottom: 0.55rem;
+  margin-bottom: var(--space-3);
+}
+
+.column-main .section:last-child {
+  margin-bottom: 0;
 }
 
 .column-list {
-  margin-top: 0.35rem;
+  margin-top: var(--space-1);
   padding-left: 1rem;
 }
 
@@ -119,19 +133,20 @@ b {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 0;
-  padding: 0.3rem;
-  margin-top: 0.55rem;
+  padding: var(--space-1);
+  margin-top: var(--space-3);
 }
 
 .section > :not(h2) {
-  padding-inline: 0.5rem;
+  padding-inline: var(--space-2);
 }
 
 h1,
 h2,
 h3 {
-  margin: 0 0 0.4rem;
+  margin: 0 0 var(--space-1);
   line-height: 1.2;
+  font-weight: 700;
 }
 
 h1 {
@@ -139,7 +154,7 @@ h1 {
 }
 
 h2 {
-  padding: 0.25rem 0.45rem;
+  padding: var(--space-1) var(--space-2);
   background: var(--surface-2);
   border-top: 1px solid var(--line-light);
   border-right: 1px solid var(--line-dark);
@@ -152,8 +167,10 @@ h2 {
 }
 
 p {
-  margin: 0.45rem 0 0;
-  color: var(--text);
+  margin: var(--space-1) 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 .lead {
@@ -172,11 +189,11 @@ p {
   display: inline-block;
   text-decoration: none;
   background: var(--surface);
-  color: var(--brand);
+  color: var(--text);
   border-radius: 0;
-  padding: 0.45rem 0.65rem;
+  padding: var(--space-1) var(--space-2);
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   border-top: 1px solid var(--line-light);
   border-right: 1px solid var(--line-dark);
   border-bottom: 1px solid var(--line-dark);
@@ -187,9 +204,22 @@ p {
   background: var(--surface-2);
 }
 
+.btn.btn-primary {
+  background: var(--brand);
+  color: #0f1728;
+  border-top: 1px solid #b8ccff;
+  border-right: 1px solid #526eb8;
+  border-bottom: 1px solid #526eb8;
+  border-left: 1px solid #b8ccff;
+}
+
+.btn.btn-primary:hover {
+  background: #9bb7ff;
+}
+
 .btn.secondary {
   background: var(--panel);
-  color: var(--brand);
+  color: var(--muted);
 }
 
 .btn.secondary:hover {
@@ -197,9 +227,10 @@ p {
 }
 
 ul {
-  margin: 0.5rem 0 0;
+  margin: var(--space-2) 0 0;
   padding-left: 1.2rem;
-  color: var(--text);
+  color: var(--muted);
+  line-height: 1.6;
 }
 
 .portfolio-grid {
@@ -212,8 +243,8 @@ ul {
 .why-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.8rem;
-  margin-top: 0.6rem;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
 }
 
 .card {
@@ -222,7 +253,7 @@ ul {
   border-bottom: 1px solid var(--line-dark);
   border-left: 1px solid var(--line-light);
   border-radius: 0;
-  padding: 0.85rem;
+  padding: var(--space-2);
   background: var(--surface);
 }
 
@@ -248,7 +279,7 @@ ul {
 
 .is-active {
   border-color: var(--brand);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand) 30%, transparent);
+  background: color-mix(in srgb, var(--surface) 70%, var(--brand));
 }
 
 .card strong {
@@ -260,19 +291,19 @@ ul {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: 0.35rem;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
 }
 
 .step {
   margin: 0;
-  padding: 0.35rem 0.5rem;
+  padding: var(--space-1) var(--space-2);
   border: 1px solid var(--line-dark);
   border-radius: 0;
   background: var(--surface);
   color: var(--text);
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
 }
 
 .step-btn {
@@ -295,7 +326,7 @@ ul {
   background: var(--panel);
   color: var(--text);
   border-radius: 0;
-  padding: 0.3rem 0.55rem;
+  padding: var(--space-1) var(--space-2);
   font-weight: 600;
   cursor: pointer;
 }
@@ -319,18 +350,20 @@ ul {
 }
 
 .interactive-note {
-  margin-top: 0.7rem;
+  margin-top: var(--space-2);
   min-height: 1.4em;
+  color: var(--muted);
 }
 
 .contact-form {
-  margin-top: 0.9rem;
+  margin-top: var(--space-3);
   display: grid;
-  gap: 0.55rem;
+  gap: var(--space-2);
 }
 
 .contact-label {
-  font-weight: 600;
+  font-weight: 400;
+  color: var(--text);
 }
 
 .contact-form input,
@@ -354,7 +387,7 @@ ul {
 }
 
 .wb-hero {
-  margin-top: 0.75rem;
+  margin-top: var(--space-2);
 }
 
 .wb-shell {
@@ -387,16 +420,21 @@ ul {
 }
 
 .wb-builder {
-  margin-top: 0.85rem;
+  margin-top: var(--space-3);
 }
 
 .wb-prompt {
-  margin-bottom: 0.6rem;
+  margin-bottom: var(--space-2);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  text-transform: none;
+  font-size: 1.1rem;
 }
 
 .wb-form {
   display: grid;
-  gap: 0.9rem;
+  gap: var(--space-3);
 }
 
 .wb-fieldset {
@@ -406,7 +444,7 @@ ul {
   border-left: 1px solid var(--line-light);
   border-radius: 0;
   background: var(--surface);
-  padding: 0.75rem;
+  padding: var(--space-3);
   margin: 0;
 }
 
@@ -417,13 +455,16 @@ ul {
 
 .wb-fieldset p {
   margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+  margin-bottom: var(--space-2);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--muted);
 }
 
 .wb-options {
   display: grid;
-  gap: 0.4rem;
+  gap: var(--space-2);
 }
 
 .wb-options-grid {
@@ -433,26 +474,83 @@ ul {
 .wb-option {
   display: flex;
   align-items: flex-start;
-  gap: 0.55rem;
+  gap: var(--space-2);
   border: 1px solid var(--line-dark);
   border-radius: 0;
   background: var(--surface);
-  padding: 0.55rem 0.6rem;
+  padding: var(--space-2);
 }
 
-.wb-option input {
-  margin-top: 0.18rem;
-  accent-color: var(--brand);
+.wb-option span {
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.wb-option input[type='radio'],
+.wb-option input[type='checkbox'] {
+  appearance: none;
+  inline-size: 16px;
+  block-size: 16px;
+  margin-top: 2px;
+  border: 1px solid var(--line-light);
+  background: #10141a;
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.wb-option input[type='radio'] {
+  border-radius: 50%;
+}
+
+.wb-option input[type='checkbox'] {
+  border-radius: 0;
+}
+
+.wb-option input[type='radio']::before,
+.wb-option input[type='checkbox']::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  transform: scale(0);
+  transition: transform 120ms ease-in-out;
+  background: var(--brand);
+}
+
+.wb-option input[type='radio']::before {
+  border-radius: 50%;
+}
+
+.wb-option input[type='radio']:checked,
+.wb-option input[type='checkbox']:checked {
+  border-color: var(--brand);
+}
+
+.wb-option input[type='radio']:checked::before,
+.wb-option input[type='checkbox']:checked::before {
+  transform: scale(1);
+}
+
+.wb-option input[type='radio']:focus-visible,
+.wb-option input[type='checkbox']:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
 .wb-option:hover {
   border-color: var(--brand);
 }
 
+.wb-option:hover input[type='radio'],
+.wb-option:hover input[type='checkbox'] {
+  border-color: var(--brand);
+}
+
 .wb-label {
   display: inline-block;
-  margin-bottom: 0.45rem;
-  font-weight: 600;
+  margin-bottom: var(--space-1);
+  font-weight: 400;
+  color: var(--text);
 }
 
 .wb-hero input[type='text'],
@@ -474,18 +572,18 @@ ul {
 .wb-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
+  gap: var(--space-2);
 }
 
 .wb-summary {
-  margin-top: 1rem;
+  margin-top: var(--space-3);
   border-top: 1px solid var(--line-light);
   border-right: 1px solid var(--line-dark);
   border-bottom: 1px solid var(--line-dark);
   border-left: 1px solid var(--line-light);
   border-radius: 0;
   background: var(--surface);
-  padding: 0.9rem;
+  padding: var(--space-3);
 }
 
 .wb-summary-body {
@@ -501,10 +599,10 @@ ul {
 }
 
 .wb-summary-actions {
-  margin-top: 0.75rem;
+  margin-top: var(--space-2);
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
+  gap: var(--space-2);
 }
 
 .wb-summary.wb-ready {
@@ -514,6 +612,28 @@ ul {
 .wb-hero :is(button, input, textarea, a):focus-visible {
   outline: 2px solid var(--brand);
   outline-offset: 2px;
+}
+
+.column-right h2:nth-of-type(2) {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.rail-list {
+  margin-top: var(--space-2);
+}
+
+.rail-list li {
+  margin-bottom: var(--space-1);
+}
+
+.rail-next-link {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.rail-next-link:hover {
+  color: var(--brand);
 }
 
 .wb-shell[data-state='welcome'] .wb-welcome {
@@ -584,9 +704,9 @@ ul {
 }
 
 .footer {
-  margin-top: 1.2rem;
+  margin-top: var(--space-4);
   text-align: center;
-  color: var(--text);
+  color: var(--muted);
   font-size: 0.75rem;
 }
 

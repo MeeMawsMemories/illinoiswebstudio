@@ -50,6 +50,10 @@ if (shell) {
   const copyStatus = document.getElementById('wb-copy-status');
   const resetButton = document.getElementById('wb-reset');
 
+  const railHighlightsList = document.getElementById('rail-highlights-list');
+  const railNextCopy = document.getElementById('rail-next-copy');
+  const railNextLink = document.getElementById('rail-next-link');
+
   const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const getSessionValue = (key) => {
@@ -240,6 +244,55 @@ if (shell) {
     return '';
   };
 
+  const highlightMap = {
+    'Business brochure / marketing site': [
+      'Service-first structure for quick scanning.',
+      'Local trust signals near contact actions.',
+      'Conversion-focused copy blocks by section.'
+    ],
+    'Ecommerce / store': [
+      'Product discovery and category flow tuned for speed.',
+      'Checkout path reduced to fewer decision points.',
+      'Conversion tracking on cart and purchase actions.'
+    ],
+    'Portfolio / gallery': [
+      'Work samples prioritized above long paragraphs.',
+      'Project detail templates for consistent storytelling.',
+      'Inquiry actions placed beside high-intent content.'
+    ],
+    'Internal tool / portal': [
+      'Role-based navigation to reduce user friction.',
+      'Dashboard-first flow for daily recurring tasks.',
+      'Security and permissions considered from the start.'
+    ],
+    'Not sure (guide me)': [
+      'Start with goals before choosing complex features.',
+      'Build a lean first version, then iterate with data.',
+      'Prioritize one conversion outcome for launch.'
+    ]
+  };
+
+  const renderRailHighlights = (siteType) => {
+    if (!railHighlightsList) {
+      return;
+    }
+
+    const items = highlightMap[siteType] || highlightMap['Not sure (guide me)'];
+
+    railHighlightsList.innerHTML = items.map((item) => `<li>${item}</li>`).join('');
+
+    if (railNextCopy) {
+      railNextCopy.textContent = siteType
+        ? 'Generate your summary, then submit the contact form when the direction looks right.'
+        : 'Select a site type, then generate your summary in the center panel.';
+    }
+
+    if (railNextLink) {
+      railNextLink.setAttribute('href', siteType ? '#contact' : '#builder-hero');
+      railNextLink.textContent = siteType ? 'Continue to Contact' : 'Go to Project Builder';
+    }
+  };
+
   const buildSummaryText = (state) => {
     const selectedFeatures = state.features.length ? state.features.join(', ') : 'No specific features selected yet';
 
@@ -298,6 +351,7 @@ if (shell) {
     }
 
     live.textContent = 'Builder reset.';
+    renderRailHighlights('');
     subjectInput.focus();
   };
 
@@ -363,8 +417,13 @@ if (shell) {
 
   resetButton.addEventListener('click', resetForm);
 
-  form.addEventListener('change', saveState);
-  form.addEventListener('input', saveState);
+  const handleStateChange = () => {
+    saveState();
+    renderRailHighlights(getState().siteType);
+  };
+
+  form.addEventListener('change', handleStateChange);
+  form.addEventListener('input', handleStateChange);
 
   motionQuery.addEventListener('change', () => {
     if (motionQuery.matches) {
@@ -374,5 +433,6 @@ if (shell) {
   });
 
   restoreState();
+  renderRailHighlights(getState().siteType);
   runWelcomeFlow();
 }
