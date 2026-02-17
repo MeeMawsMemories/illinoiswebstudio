@@ -11,116 +11,141 @@
   <main class="wrap">
     <header class="site-header" aria-label="Site header">
       <a class="brand" href="#" aria-label="Illinois Web Studio home">
-        <img src="assets/img/iwsicon.png" alt="Illinois Web Studio logo" width="40" height="40" />
+        <img src="assets/images/IWStextonly.png" alt="Illinois Web Studio logo" width="40" height="40" />
       </a>
     </header>
 
-    <section class="section wb-hero" id="builder-hero" aria-labelledby="wb-heading">
-      <p class="sr-only" id="wb-live" aria-live="polite" aria-atomic="true"></p>
-      <div class="wb-shell" id="wb-shell" data-state="welcome">
-        <div class="wb-welcome" id="wb-welcome" aria-hidden="false">
-          <p class="wb-kicker">Illinois Web Studio</p>
-          <h1 id="wb-heading">Elegant websites with practical outcomes.</h1>
-          <span class="wb-underline" aria-hidden="true"></span>
-        </div>
+    <div class="page-columns">
+      <aside class="column column-left section" aria-label="Site navigation and quick links">
+        <h2>Channels</h2>
+        <ul class="column-list">
+          <li><a href="#builder-hero">Project Builder</a></li>
+          <li><a href="#why-us">Why Us</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <h2>Quick Info</h2>
+        <p><strong>Serving:</strong> Southern Illinois businesses.</p>
+        <p><strong>Turnaround:</strong> Draft in 48 hours.</p>
+      </aside>
 
-        <div class="wb-builder" id="wb-builder" hidden>
-          <h2 class="wb-prompt">What kind of site can we help you create?</h2>
-          <form id="wb-form" class="wb-form" novalidate>
-            <fieldset class="wb-fieldset" id="wb-site-type" aria-describedby="wb-site-type-help">
-              <legend>Site type</legend>
-              <p id="wb-site-type-help">Choose one option.</p>
-              <div class="wb-options" id="wb-site-type-options"></div>
-            </fieldset>
-
-            <fieldset class="wb-fieldset wb-wide" id="wb-features" aria-describedby="wb-features-help">
-              <legend>Features needed</legend>
-              <p id="wb-features-help">Select any that match your goals.</p>
-              <div class="wb-options wb-options-grid" id="wb-feature-options"></div>
-            </fieldset>
-
-            <fieldset class="wb-fieldset" id="wb-priority" aria-describedby="wb-priority-help">
-              <legend>Priority</legend>
-              <p id="wb-priority-help">Choose your main focus first.</p>
-              <div class="wb-options" id="wb-priority-options"></div>
-            </fieldset>
-
-            <div class="wb-fieldset wb-wide">
-              <label class="wb-label" for="wb-subject">Project subject / business name</label>
-              <input id="wb-subject" name="subject" type="text" maxlength="90" autocomplete="organization" placeholder="Example: Hogan Pools" required />
+      <div class="column column-main">
+        <section class="section wb-hero" id="builder-hero" aria-labelledby="wb-heading">
+          <p class="sr-only" id="wb-live" aria-live="polite" aria-atomic="true"></p>
+          <div class="wb-shell" id="wb-shell" data-state="welcome">
+            <div class="wb-welcome" id="wb-welcome" aria-hidden="false">
+              <p class="wb-kicker">Illinois Web Studio</p>
+              <h1 id="wb-heading">Elegant websites with practical outcomes.</h1>
+              <span class="wb-underline" aria-hidden="true"></span>
             </div>
 
-            <div class="wb-fieldset wb-wide">
-              <label class="wb-label" for="wb-description">Describe your goal</label>
-              <textarea id="wb-description" name="description" rows="4" maxlength="500" placeholder="1–4 sentences on what you want the site to achieve." required></textarea>
-            </div>
+            <div class="wb-builder" id="wb-builder" hidden>
+              <h2 class="wb-prompt">What kind of site can we help you create?</h2>
+              <form id="wb-form" class="wb-form" novalidate>
+                <fieldset class="wb-fieldset" id="wb-site-type" aria-describedby="wb-site-type-help">
+                  <legend>Site type</legend>
+                  <p id="wb-site-type-help">Choose one option.</p>
+                  <div class="wb-options" id="wb-site-type-options"></div>
+                </fieldset>
 
-            <div class="wb-actions wb-wide">
-              <button class="btn" id="wb-generate" type="submit">Generate My Project Summary</button>
-              <button class="btn secondary" id="wb-reset" type="button">Reset</button>
+                <fieldset class="wb-fieldset wb-wide" id="wb-features" aria-describedby="wb-features-help">
+                  <legend>Features needed</legend>
+                  <p id="wb-features-help">Select any that match your goals.</p>
+                  <div class="wb-options wb-options-grid" id="wb-feature-options"></div>
+                </fieldset>
+
+                <fieldset class="wb-fieldset" id="wb-priority" aria-describedby="wb-priority-help">
+                  <legend>Priority</legend>
+                  <p id="wb-priority-help">Choose your main focus first.</p>
+                  <div class="wb-options" id="wb-priority-options"></div>
+                </fieldset>
+
+                <div class="wb-fieldset wb-wide">
+                  <label class="wb-label" for="wb-subject">Project subject / business name</label>
+                  <input id="wb-subject" name="subject" type="text" maxlength="90" autocomplete="organization" placeholder="Example: Hogan Pools" required />
+                </div>
+
+                <div class="wb-fieldset wb-wide">
+                  <label class="wb-label" for="wb-description">Describe your goal</label>
+                  <textarea id="wb-description" name="description" rows="4" maxlength="500" placeholder="1–4 sentences on what you want the site to achieve." required></textarea>
+                </div>
+
+                <div class="wb-actions wb-wide">
+                  <button class="btn" id="wb-generate" type="submit">Generate My Project Summary</button>
+                  <button class="btn secondary" id="wb-reset" type="button">Reset</button>
+                </div>
+              </form>
+
+              <section class="wb-summary wb-wide" id="wb-summary" aria-labelledby="wb-summary-title" aria-live="polite">
+                <h3 id="wb-summary-title">Project Summary</h3>
+                <div class="wb-summary-body" id="wb-summary-body">
+                  <p>Choose your project details, then generate a summary.</p>
+                </div>
+                <div class="wb-summary-actions">
+                  <button class="btn secondary" id="wb-copy" type="button" disabled>Copy Summary</button>
+                  <a class="btn" href="#contact">Contact Us</a>
+                </div>
+                <p class="interactive-note" id="wb-copy-status" aria-live="polite"></p>
+              </section>
             </div>
+          </div>
+        </section>
+
+        <section class="section" id="why-us">
+          <h2>Why us</h2>
+          <div class="why-grid" role="list" aria-label="Why choose us">
+            <button class="card why-card is-active" type="button" role="listitem" data-why="mobile">
+              <h3>Looks premium on mobile</h3>
+            </button>
+            <button class="card why-card" type="button" role="listitem" data-why="speed">
+              <h3>Loads fast</h3>
+            </button>
+            <button class="card why-card" type="button" role="listitem" data-why="cta">
+              <h3>Clear calls-to-action</h3>
+            </button>
+          </div>
+          <p class="interactive-note" id="why-detail">Most visitors browse on their phone first, so every layout decision starts mobile-first.</p>
+        </section>
+
+        <section class="section" id="process">
+          <h2>Process</h2>
+          <div class="process-strip" aria-label="3-step process">
+            <button class="step step-btn is-active" type="button" data-step="examples">Send examples</button>
+            <p class="arrow" aria-hidden="true">→</p>
+            <button class="step step-btn" type="button" data-step="draft">We draft in 48 hours</button>
+            <p class="arrow" aria-hidden="true">→</p>
+            <button class="step step-btn" type="button" data-step="launch">Launch + iterate</button>
+          </div>
+          <p class="interactive-note" id="step-detail">Share 2-3 sites you like plus your services, location, and best contact method.</p>
+        </section>
+
+        <section class="section" id="contact">
+          <h2>Contact</h2>
+          <p>Use the form below and we’ll reply as soon as possible.</p>
+          <form class="contact-form" id="contact-form" action="#contact" method="post" novalidate>
+            <label class="contact-label" for="contact-name">Name</label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="80" required />
+
+            <label class="contact-label" for="contact-email">Email</label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="120" required />
+
+            <label class="contact-label" for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="5" maxlength="700" required></textarea>
+
+            <button class="btn" type="submit">Send message</button>
           </form>
-
-          <section class="wb-summary wb-wide" id="wb-summary" aria-labelledby="wb-summary-title" aria-live="polite">
-            <h3 id="wb-summary-title">Project Summary</h3>
-            <div class="wb-summary-body" id="wb-summary-body">
-              <p>Choose your project details, then generate a summary.</p>
-            </div>
-            <div class="wb-summary-actions">
-              <button class="btn secondary" id="wb-copy" type="button" disabled>Copy Summary</button>
-              <a class="btn" href="#contact">Contact Us</a>
-            </div>
-            <p class="interactive-note" id="wb-copy-status" aria-live="polite"></p>
-          </section>
-        </div>
+          <p class="interactive-note" id="contact-status" aria-live="polite"></p>
+        </section>
       </div>
-    </section>
 
-    <section class="section">
-      <h2>Why us</h2>
-      <div class="why-grid" role="list" aria-label="Why choose us">
-        <button class="card why-card is-active" type="button" role="listitem" data-why="mobile">
-          <h3>Looks premium on mobile</h3>
-        </button>
-        <button class="card why-card" type="button" role="listitem" data-why="speed">
-          <h3>Loads fast</h3>
-        </button>
-        <button class="card why-card" type="button" role="listitem" data-why="cta">
-          <h3>Clear calls-to-action</h3>
-        </button>
-      </div>
-      <p class="interactive-note" id="why-detail">Most visitors browse on their phone first, so every layout decision starts mobile-first.</p>
-    </section>
-
-    <section class="section">
-      <h2>Process</h2>
-      <div class="process-strip" aria-label="3-step process">
-        <button class="step step-btn is-active" type="button" data-step="examples">Send examples</button>
-        <p class="arrow" aria-hidden="true">→</p>
-        <button class="step step-btn" type="button" data-step="draft">We draft in 48 hours</button>
-        <p class="arrow" aria-hidden="true">→</p>
-        <button class="step step-btn" type="button" data-step="launch">Launch + iterate</button>
-      </div>
-      <p class="interactive-note" id="step-detail">Share 2-3 sites you like plus your services, location, and best contact method.</p>
-    </section>
-
-    <section class="section" id="contact">
-      <h2>Contact</h2>
-      <p>Use the form below and we’ll reply as soon as possible.</p>
-      <form class="contact-form" id="contact-form" action="#contact" method="post" novalidate>
-        <label class="contact-label" for="contact-name">Name</label>
-        <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="80" required />
-
-        <label class="contact-label" for="contact-email">Email</label>
-        <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="120" required />
-
-        <label class="contact-label" for="contact-message">Message</label>
-        <textarea id="contact-message" name="message" rows="5" maxlength="700" required></textarea>
-
-        <button class="btn" type="submit">Send message</button>
-      </form>
-      <p class="interactive-note" id="contact-status" aria-live="polite"></p>
-    </section>
+      <aside class="column column-right section" aria-label="Highlights and links">
+        <h2>Highlights</h2>
+        <p><strong>Mobile-first layouts</strong> built for real customer behavior.</p>
+        <p><strong>Fast loading pages</strong> with practical conversion-focused sections.</p>
+        <h2>Next Step</h2>
+        <p><a href="#contact"><strong>Request your draft</strong></a> and we’ll follow up quickly.</p>
+      </aside>
+    </div>
 
     <p class="footer">Illinois Web Studio</p>
   </main>
