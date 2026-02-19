@@ -391,8 +391,12 @@ ul {
 }
 
 .wb-shell {
-  min-height: clamp(36rem, 86vh, 48rem);
+  min-height: 0;
   position: relative;
+}
+
+.wb-shell[data-state='welcome'] {
+  min-height: clamp(36rem, 86vh, 48rem);
 }
 
 .wb-welcome {
@@ -421,6 +425,10 @@ ul {
 
 .wb-builder {
   margin-top: var(--space-3);
+}
+
+.wb-builder .wb-form {
+  margin-bottom: var(--space-1);
 }
 
 .wb-prompt {
@@ -575,6 +583,10 @@ ul {
   gap: var(--space-2);
 }
 
+.wb-step-actions {
+  margin-top: var(--space-2);
+}
+
 .wb-summary {
   margin-top: var(--space-3);
   border-top: 1px solid var(--line-light);
@@ -587,7 +599,7 @@ ul {
 }
 
 .wb-summary-body {
-  min-height: 9.2rem;
+  min-height: 0;
 }
 
 .wb-summary-body p {
@@ -603,6 +615,7 @@ ul {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+  justify-content: flex-end;
 }
 
 .wb-summary.wb-ready {
