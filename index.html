@@ -6,6 +6,9 @@
   <title>Illinois Web Studio</title>
   <meta name="description" content="Simple websites for Southern Illinois businesses. Fast, clear, and built to convert." />
   <link rel="stylesheet" href="site.css" />
+  <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 </head>
 <body>
   <main class="wrap">
@@ -39,7 +42,7 @@
             </div>
 
             <div class="wb-builder" id="wb-builder" hidden>
-              <h2 class="wb-prompt">What can we help you with?</h2>
+              <h2 class="wb-prompt">From our home page, to yours.</h2>
               <form id="wb-form" class="wb-form" novalidate>
                 <fieldset class="wb-fieldset" id="wb-starting-point" aria-describedby="wb-starting-point-help">
                   <legend>How can we help?</legend>
@@ -122,13 +125,13 @@
           <div class="process-strip" aria-label="3-step process">
             <button class="step step-btn is-active" type="button" data-step="form">Fill out the form</button>
             <p class="arrow" aria-hidden="true">→</p>
-            <button class="step step-btn is-active" type="button" data-step="examples">Send us examples</button>
+            <button class="step step-btn" type="button" data-step="examples">Send us examples</button>
             <p class="arrow" aria-hidden="true">→</p>
             <button class="step step-btn" type="button" data-step="draft">We draft in 48 hours</button>
             <p class="arrow" aria-hidden="true">→</p>
             <button class="step step-btn" type="button" data-step="launch">Launch + iterate</button>
           </div>
-          <p class="interactive-note" id="step-detail">Share 2-3 sites you like plus your services, location, and best contact method.</p>
+          <p class="interactive-note" id="step-detail">Choose the type of site you want, the features you need, and your main goal.</p>
         </section>
 
         <section class="section" id="contact" hidden>
@@ -192,6 +195,13 @@
       launch: 'Once approved, we launch and keep improving based on what users actually do.'
     };
 
+    const defaultStepButton = document.querySelector('[data-step="form"]');
+    if (defaultStepButton) {
+      stepButtons.forEach((item) => item.classList.remove('is-active'));
+      defaultStepButton.classList.add('is-active');
+      stepDetail.textContent = stepCopy.form;
+    }
+
     stepButtons.forEach((button) => {
       button.addEventListener('click', () => {
         stepButtons.forEach((item) => item.classList.remove('is-active'));
@@ -200,20 +210,6 @@
       });
     });
 
-    const contactForm = document.getElementById('contact-form');
-    const contactStatus = document.getElementById('contact-status');
-
-    contactForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      if (!contactForm.checkValidity()) {
-        contactStatus.textContent = 'Please complete all fields before sending.';
-        return;
-      }
-
-      contactForm.reset();
-      contactStatus.textContent = 'Thanks. Your message has been received.';
-    });
   </script>
 </body>
 </html>

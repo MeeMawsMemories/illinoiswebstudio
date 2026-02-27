@@ -2,6 +2,11 @@ const STORAGE_KEY = 'iws-project-builder-v1';
 const WELCOME_SEEN_KEY = 'iws-welcome-seen';
 const GENERATED_SUMMARY_HEADING = '--- Generated Project Summary ---';
 const GENERATED_SUMMARY_BREAK = '\n\n\n';
+const CONTACT_DELIVERY_EMAIL = 'contact@illinoiswebstudio.com';
+const DIRECT_TO_CONTACT_OPTIONS = new Set([
+  'I already have a website and need help with it',
+  'I need help with something else'
+]);
 
 const config = {
   startingPoints: [
@@ -75,7 +80,10 @@ if (shell) {
   const contactCtaButton = document.getElementById('wb-contact-cta');
   const resetButton = document.getElementById('wb-reset');
   const contactSection = document.getElementById('contact');
+  const contactForm = document.getElementById('contact-form');
+  const contactStatus = document.getElementById('contact-status');
   const contactNameInput = document.getElementById('contact-name');
+  const contactEmailInput = document.getElementById('contact-email');
   const contactMessageInput = document.getElementById('contact-message');
 
   const railHighlightsList = document.getElementById('rail-highlights-list');
@@ -83,6 +91,7 @@ if (shell) {
   const railNextLink = document.getElementById('rail-next-link');
 
   const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const contactEndpoint = `https://formsubmit.co/ajax/${encodeURIComponent(CONTACT_DELIVERY_EMAIL)}`;
 
   const getSessionValue = (key) => {
     try {
@@ -416,7 +425,7 @@ if (shell) {
       return 1;
     }
 
-    if (state.startingPoint === 'I need help with something else') {
+    if (DIRECT_TO_CONTACT_OPTIONS.has(state.startingPoint)) {
       return 1;
     }
 
@@ -564,7 +573,7 @@ if (shell) {
         return;
       }
 
-      if (state.startingPoint === 'I need help with something else') {
+      if (DIRECT_TO_CONTACT_OPTIONS.has(state.startingPoint)) {
         if (contactSection) {
           contactSection.hidden = false;
           contactSection.scrollIntoView({
@@ -746,6 +755,62 @@ if (shell) {
 
       if (contactNameInput) {
         contactNameInput.focus();
+      }
+    });
+  }
+
+  if (contactForm && contactStatus) {
+    contactForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!contactForm.checkValidity()) {
+        contactStatus.textContent = 'Please complete all fields before sending.';
+        return;
+      }
+
+      if (CONTACT_DELIVERY_EMAIL.startsWith('REPLACE_WITH_YOUR_EMAIL')) {
+        contactStatus.textContent = 'Set CONTACT_DELIVERY_EMAIL in assets/js/interactive-hero.js to enable automatic delivery.';
+        return;
+      }
+
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const name = contactNameInput?.value.trim() || '';
+      const email = contactEmailInput?.value.trim() || '';
+      const message = contactMessageInput?.value.trim() || '';
+
+      if (!submitButton) {
+        return;
+      }
+
+      submitButton.disabled = true;
+      contactStatus.textContent = 'Sending...';
+
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('message', message);
+      formData.append('_subject', `Illinois Web Studio inquiry from ${name}`);
+      formData.append('_captcha', 'false');
+
+      try {
+        const response = await fetch(contactEndpoint, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Delivery failed');
+        }
+
+        contactForm.reset();
+        contactStatus.textContent = 'Thanks. Your message has been delivered.';
+      } catch {
+        contactStatus.textContent = 'Delivery failed. Please try again in a moment.';
+      } finally {
+        submitButton.disabled = false;
       }
     });
   }
